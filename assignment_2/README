@@ -1,1 +1,30 @@
+ECE464 Database
+Problem Set 2: A Web Scraper
+Di Mei
+Instructor: Prof.Sokolov
+
+
+Running Environment:
+1. Python 3.6.8
+2. MongoDB server & shell 4.2.1
+3. pymongo 3.9.0
+4. Scrapy 1.8.0
+
+
+Running Guide:
+Use linux terminal to access directory "recipe" and then run command:
+$ scrapy crawl recipe
+
+
+Scraper Information:
+The webpage I scrap is https://www.delish.com/cooking/recipe-ideas/, which provides various information about recipes. This website is also one of the web sources used for my final project (with my teammate Zhihao Wang). After running the command shown above, all scraped information (recipe_title, recipe_url, recipe_author) is stored in MongoDB. Names of stored database and collection are both "recipe". I test my database collection "recipe" in MongoDB shell by writing a query to ask for all documents with recipe_author "Laura Rege".
+
+> db.recipe.find({recipe_author: "Laura Rege"})
+{ "_id" : ObjectId("5ddf7da14c38deb2ce1eb5a2"), "recipe_title" : "Eggnog Spice Cake >>> Every Christmas Cookie Ever", "recipe_url" : "/cooking/recipe-ideas/a29712824/eggnog-spice-cake-recipe/", "recipe_author" : "Laura Rege" }
+
+MongoDB successfully returns one document.
+
+
+Further Challenge:
+In my scraped website, new pages of content are automatically updated when visitor scrolls down the webpage. When new page of content is updated, the webpage's url keeps unchanged and this dynamic loading technique is achieved by ajax. The challenge will be to scrap multiple pages of content in a single webpage of this website.
 
